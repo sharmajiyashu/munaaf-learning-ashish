@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Munaaf Learning Community</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- ========== EASY EDIT CONFIGURATION ========== -->
+  <script>
+    const CONFIG = {
+      // Brand Info
+      brandName: "Munaaf Learning Community",
+      brandHighlight: "OFFICIAL™",
+
+      // Logo / Profile Image path
+      logo: "profile.png",
+
+      // Telegram Channel Link
+      telegramLink: "https://t.me/+ebBoX2O0WOs3MzVl",
+
+      // Facebook / Meta Pixel ID (Leave blank if not used)
+      pixelId: "2089783345757230",
+
+      // Community Description
+      description: "Welcome to the elite community. Get access to premium daily updates, exclusive strategies and 24/7 support from our experts.",
+
+      // Highlights & Features
+      features: [
+        { icon: "🛡️", title: "Secure", subtitle: "Safe Platform" },
+        { icon: "⭐", title: "Premium", subtitle: "Daily Updates" },
+        { icon: "👥", title: "100k+", subtitle: "Active Members" },
+        { icon: "⚡", title: "Live", subtitle: "Real-time Info" }
+      ],
+
+      // Ads attribution
+      adsByName: "Leadscale",
+      adsByLink: "#",
+
+      // Risk & Trading Disclaimer
+      disclaimer: "Trading in financial markets involves a high level of risk and may not be suitable for all investors. You can lose some or all of your invested capital. Past performance is not indicative of future results. This is not financial advice. Always do your own research and trade responsibly."
+    };
+  </script>
+  <!-- ========== END CONFIGURATION ========== -->
+
+  <!-- Meta Pixel Code -->
+  <script>
+    if (CONFIG.pixelId && CONFIG.pixelId.trim() !== "") {
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0;
+        t.src = v; s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', CONFIG.pixelId);
+      fbq('track', 'PageView');
+    }
+  </script>
+  <!-- End Meta Pixel Code -->
+
+  <style>
+    :root {
+      --bg-dark: #07080a;
+      --card-bg: #101116;
+      --box-bg: linear-gradient(145deg, #181920 0%, #121318 100%);
+      --box-border: rgba(255, 255, 255, 0.07);
+      --box-border-hover: rgba(255, 255, 255, 0.25);
+      --text-primary: #ffffff;
+      --text-secondary: #9ca3af;
+      --text-muted: #6b7280;
+      --accent-silver: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
+      --btn-gradient: linear-gradient(135deg, #ffffff 0%, #f1f5f9 40%, #cbd5e1 100%);
+      --btn-shadow: 0 10px 30px rgba(255, 255, 255, 0.18), 0 4px 12px rgba(0, 0, 0, 0.6);
+      --online-green: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at 50% 0%, #1a1c24 0%, #0b0c10 60%, var(--bg-dark) 100%);
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 30px 14px;
+      overflow-x: hidden;
+      color: var(--text-primary);
+    }
+
+    /* Ambient Background Glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(0, 255, 170, 0.06) 0%, rgba(0, 200, 255, 0.03) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ========================================================
+       SNAKE BORDER ANIMATION (Running Glowing Neon Snake on Border)
+       ======================================================== */
+    .snake-card-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 418px;
+      border-radius: 34px;
+      padding: 3.5px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.95),
+        0 0 30px rgba(0, 255, 180, 0.2);
+      z-index: 1;
+    }
+
+    /* Glowing Snake 1 (Laser Cyan-Green Snake with head & trailing tail) */
+    .snake-card-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 250%;
+      height: 250%;
+      background: conic-gradient(transparent 0deg,
+          transparent 250deg,
+          rgba(0, 255, 180, 0.1) 275deg,
+          #00ff9d 315deg,
+          #00e1ff 342deg,
+          #ff0080 355deg,
+          #ffffff 360deg);
+      animation: snakeRun 3s linear infinite;
+      border-radius: 50%;
+    }
+
+    /* Glowing Snake 2 (Trailing Neon Amber-Magenta Snake) */
+    .snake-card-wrapper::after {
+      content: '';
+      position: absolute;
+      width: 250%;
+      height: 250%;
+      background: conic-gradient(transparent 0deg,
+          transparent 250deg,
+          rgba(255, 200, 0, 0.1) 275deg,
+          #ffaa00 315deg,
+          #ff0066 342deg,
+          #00ffff 355deg,
+          #ffffff 360deg);
+      animation: snakeRun 3s linear infinite;
+      animation-delay: -1.5s;
+      border-radius: 50%;
+    }
+
+    @keyframes snakeRun {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* CARD CONTAINER */
+    .container {
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 30.5px;
+      padding: 34px 24px 28px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(20px);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12);
+    }
+
+    /* PROFILE AVATAR */
+    .profile {
+      width: 104px;
+      height: 104px;
+      margin: 0 auto;
+      position: relative;
+      border-radius: 50%;
+      padding: 3.5px;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(0, 255, 200, 0.8) 40%, rgba(148, 163, 184, 0.6) 100%);
+      box-shadow: 0 0 25px rgba(0, 255, 180, 0.25);
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      background: #181920;
+    }
+
+    .online {
+      width: 20px;
+      height: 20px;
+      background: var(--online-green);
+      border-radius: 50%;
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+      border: 3px solid #111216;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
+      animation: pulseOnline 2.2s infinite;
+    }
+
+    @keyframes pulseOnline {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+      }
+
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+      }
+    }
+
+    /* TITLE */
+    h1 {
+      color: #ffffff;
+      font-size: 24px;
+      margin-top: 20px;
+      font-weight: 800;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
+    }
+
+    h1 span {
+      background: var(--accent-silver);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 19px;
+      display: inline-block;
+      margin-left: 4px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    /* VERIFIED BADGE */
+    .verify {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 10px;
+      padding: 5px 14px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #e2e8f0;
+      letter-spacing: 0.2px;
+    }
+
+    .verify .tick {
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #0c0d11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10.5px;
+      font-weight: 900;
+    }
+
+    /* DESCRIPTION */
+    .desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.65;
+      margin-top: 16px;
+      padding: 0 4px;
+      font-weight: 400;
+    }
+
+    /* TELEGRAM BUTTON */
+    .telegram-btn {
+      margin-top: 24px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      text-decoration: none;
+      background: var(--btn-gradient);
+      color: #090a0d;
+      padding: 16px;
+      border-radius: 18px;
+      font-size: 16.5px;
+      font-weight: 800;
+      letter-spacing: 0.2px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: var(--btn-shadow);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .telegram-btn::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(60deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+      transform: rotate(30deg);
+      animation: shine 4s infinite;
+    }
+
+    @keyframes shine {
+      0% {
+        transform: translateX(-100%) rotate(30deg);
+      }
+
+      25%,
+      100% {
+        transform: translateX(100%) rotate(30deg);
+      }
+    }
+
+    .telegram-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 36px rgba(255, 255, 255, 0.25), 0 6px 16px rgba(0, 0, 0, 0.7);
+    }
+
+    .telegram-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .telegram-btn svg,
+    .telegram-btn img {
+      width: 23px;
+      height: 23px;
+      flex-shrink: 0;
+    }
+
+    /* FEATURES GRID */
+    .features {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .box {
+      background: var(--box-bg);
+      border-radius: 18px;
+      padding: 18px 12px;
+      border: 1px solid var(--box-border);
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .box:hover {
+      transform: translateY(-3px);
+      border-color: var(--box-border-hover);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      background: linear-gradient(145deg, #20222b 0%, #16171e 100%);
+    }
+
+    .icon {
+      font-size: 26px;
+      margin-bottom: 8px;
+      line-height: 1;
+      display: inline-block;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    }
+
+    .box h3 {
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      letter-spacing: -0.2px;
+    }
+
+    .box p {
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* ADS SECTION */
+    .ads {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .ads a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      margin-left: 4px;
+      border-bottom: 1px dotted rgba(255, 255, 255, 0.4);
+      transition: border-color 0.2s;
+    }
+
+    .ads a:hover {
+      border-bottom-color: #ffffff;
+    }
+
+    /* DISCLAIMER */
+    .disclaimer {
+      margin-top: 20px;
+      padding: 14px 12px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      text-align: left;
+    }
+
+    .disclaimer strong {
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 480px) {
+      body {
+        padding: 24px 10px;
+      }
+
+      .snake-card-wrapper {
+        border-radius: 30px;
+      }
+
+      .container {
+        border-radius: 26.5px;
+        padding: 28px 18px 22px;
+      }
+
+      h1 {
+        font-size: 22px;
+      }
+
+      .telegram-btn {
+        font-size: 16px;
+        padding: 15px;
+      }
+
+      .box h3 {
+        font-size: 14px;
+      }
+
+      .disclaimer {
+        font-size: 10.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- SNAKE BORDER RUNNER WRAPPER -->
+  <div class="snake-card-wrapper">
+
+    <div class="container">
+
+      <!-- PROFILE / LOGO -->
+      <div class="profile">
+        <img id="logo" src="profile.png" alt="Profile"
+          onerror="this.src='https://cdn-icons-png.flaticon.com/512/3135/3135715.png'">
+        <div class="online" title="Online"></div>
+      </div>
+
+      <!-- TITLE -->
+      <h1 id="brand-title"></h1>
+
+      <!-- VERIFIED BADGE -->
+      <div class="verify">
+        <div class="tick">✓</div>
+        Verified Expert Account
+      </div>
+
+      <!-- DESCRIPTION -->
+      <div class="desc" id="description"></div>
+
+      <!-- TELEGRAM BUTTON -->
+      <a id="telegram-btn" href="#" target="_blank" rel="noopener noreferrer" class="telegram-btn">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z" />
+        </svg>
+        Join Telegram Channel
+      </a>
+
+      <!-- FEATURES -->
+      <div class="features" id="features"></div>
+
+      <!-- ADS CREDIT -->
+      <div class="ads" id="ads-section">
+        Ads managed by
+        <a id="ads-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+      </div>
+
+      <!-- RISK DISCLAIMER -->
+      <div class="disclaimer" id="disclaimer"></div>
+
+    </div>
+
+  </div>
+
+  <script>
+    // Bind configuration values to DOM
+    document.getElementById('logo').src = CONFIG.logo;
+    document.getElementById('brand-title').innerHTML = `${CONFIG.brandName} <span>${CONFIG.brandHighlight}</span>`;
+    document.getElementById('description').textContent = CONFIG.description;
+    document.getElementById('telegram-btn').href = CONFIG.telegramLink;
+
+    // Ads Section
+    const adsLink = document.getElementById('ads-link');
+    if (CONFIG.adsByName) {
+      adsLink.href = CONFIG.adsByLink || '#';
+      adsLink.textContent = CONFIG.adsByName;
+    } else {
+      document.getElementById('ads-section').style.display = 'none';
+    }
+
+    // Disclaimer
+    document.getElementById('disclaimer').innerHTML = `<strong>Risk Disclaimer:</strong> ${CONFIG.disclaimer}`;
+
+    // Render Features Grid
+    const featuresContainer = document.getElementById('features');
+    featuresContainer.innerHTML = '';
+    CONFIG.features.forEach(f => {
+      const box = document.createElement('div');
+      box.className = 'box';
+      box.innerHTML = `
+        <div class="icon">${f.icon}</div>
+        <h3>${f.title}</h3>
+        <p>${f.subtitle}</p>
+      `;
+      featuresContainer.appendChild(box);
+    });
+  </script>
+
+</body>
+
+</html>
